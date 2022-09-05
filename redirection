@@ -1,0 +1,14 @@
+stdout and stdin
+in linux when we are using terminal we use programms (commands) that produce some kind of result or output.
+then this result will be shown up on our monitor which is standard output.These commands accept an input from the keyboardwhich is standard input. we use keyboard to inter input (any argument these programms accept). and keyboard is called standard input. normally these programms accept input for the stdin and thenthey process this input and send it to stdout.redirection (I/O) redirection is all about redirecting an input from a file or commands other than from stdin and redirecting an output to file or to any other commands other than to stdout. as i previously stated, stdout is a file where an out putgoes and stdin a file from which an input come.this two files are not saved on disc space like other formal file. they arejust attached to the monitor and keyboard. so changing where an output goeas and where input comes from is called redirection. it allows us to do this. and to do a redirection we use
+redirection operator >,>> for file and pipeline command for commands. 
+cat 
+tee 
+grep 
+|
+uniq 
+wc
+sort 
+head
+tail
+
