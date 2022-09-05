@@ -1,2 +1,2 @@
 #!/bin/bash
-alias foo='ls -1aR'
+find . -path "*/*" -empty | rev | cut -d'/' -f1 | rev
