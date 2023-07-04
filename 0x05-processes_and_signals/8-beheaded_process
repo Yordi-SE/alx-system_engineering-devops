@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-#This kill process if any
-pkill -f -9 7-highlander

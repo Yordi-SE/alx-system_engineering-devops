@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-#this is script display its own process ID
-echo $$
