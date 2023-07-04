@@ -1,7 +1,0 @@
-<@J-Precious>~/alx-system_engineering-devops/0x0B-ssh$ cat 2-ssh_config
-#!/usr/bin/env bash
-# Connect to the server without typing password
-SendEnv LANG LC_*
-HashKnownHosts yes
-GSSAPIAuthentication yes
-GSSAPIDelegateCredentials no
