@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
-# configuration of Ngix web server
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow "Nginx HTTP"
-sudo chown -R $USER:$USER /var/www/html
-sudo echo Hello World! > /var/www/html/index.nginx-debian.html
-redirection="return\ 301\ https:\/\/youtu.be\/7VAI73roXaY"
-sudo sed -i s/"location\ \/"/"location\ \/redirect_me"/g /etc/nginx/sites-available/default
-sudo sed  -i s/"try_files\ \$uri\ \$uri\/\ =404"/"$redirection"/g /etc/nginx/sites-available/default
+# Configures an nginx server so that /redirect_me redirects to a new page
+
+sudo apt-get update && sudo apt-get install nginx -y
+
+sudo chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
+
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+redirection=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+}"
+
+echo -e "$redirection" > /etc/nginx/sites-available/default
+
 sudo service nginx restart
