@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# confgure to add costum header
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
+config=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html;
+	add_header X-Served-By \$hostname;
+
+        server_name _;
+
+        location /redirect_me {
+                return 301 https://youtu.be/7VAI73roXaY;
+        }
+}"
+echo -e "$config" > /etc/nginx/sites-enabled/default
+sudo service nginx restart

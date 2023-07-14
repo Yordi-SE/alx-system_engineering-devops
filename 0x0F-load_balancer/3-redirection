@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# configuration of Ngix web server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow "Nginx HTTP"
+sudo chown -R $USER:$USER /var/www/html
+sudo echo Hello World! > /var/www/html/index.nginx-debian.html
+redirection="return\ 301\ https:\/\/youtu.be\/7VAI73roXaY"
+sudo sed -i s/"location\ \/"/"location\ \/redirect_me"/g /etc/nginx/sites-available/default
+sudo sed  -i s/"try_files\ \$uri\ \$uri\/\ =404"/"$redirection"/g /etc/nginx/sites-available/default
+sudo service nginx restart
