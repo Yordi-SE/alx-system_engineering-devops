@@ -3,6 +3,8 @@
 sudo apt -y update
 sudo apt -y install haproxy
 sudo chown -R "$USER":"$USER" /etc/haproxy/haproxy.cfg
+sudo chown -R "$USER":"$USER" /etc/default/haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 my_backend=\
 'backend my_backend
 	balance roundrobin
@@ -18,4 +20,4 @@ my_frontend=\
 '
 echo "$my_frontend" >> /etc/haproxy/haproxy.cfg
 sudo haproxy -c -f /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
+sudo service haproxy restart
