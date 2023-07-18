@@ -1,0 +1,15 @@
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/realyordanos.tech/html;
+
+        index index.html index.htm index.nginx-debian.html;
+	add_header X-Served-By $hostname;
+
+        server_name realyordanos.tech www.realyordanos.tech;
+
+        location /redirect_me {
+                return 301 https://youtu.be/7VAI73roXaY;
+        }
+}
