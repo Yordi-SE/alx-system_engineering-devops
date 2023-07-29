@@ -2,8 +2,8 @@
 """returns imfo about user from REST API
 """
 if __name__ == "__main__":
-    import sys
     import requests
+    import sys
     if isinstance(int(sys.argv[1]), int):
         igr = int(sys.argv[1])
     else:
